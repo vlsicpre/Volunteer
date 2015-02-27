@@ -5,6 +5,12 @@ $(document).ready(function () {
 
 
 function InitializeSliders() {
+
+
+    var interests = LoadCategories("Interests");
+    var issues = LoadCategories("Issues");
+    var intervals = LoadCategories("Intervals");
+
     $('.center').slick({
         centerMode: true,
         lazyLoad: 'ondemand',
@@ -36,28 +42,22 @@ function InitializeSliders() {
     // On after slide change
     $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
         var issueid = $(slick.$slides.get(currentSlide)).attr("issueid");
-
-
-
-
     });
 
-    var interests = LoadCategories("Interests");
-    var issues = LoadCategories("Issues");
-    var intervals = LoadCategories("Intervals"); 
 }
 
 function LoadCategories(categoryId)
 {
-    var serviceURL = "http://www.cyconcepts.org/wp-json/taxonomies/" + "issues" + "/terms";
+    var serviceURL = "http://www.cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
     var isDEV = document.location.href.indexOf('localhost') > 0;
     if (isDEV) {
-        serviceURL = "/TestData/issues.xml";
+        serviceURL = "/TestData/interest.xml";
     }
 
     var res = $.ajax({
         url: serviceURL,
         dataType: 'json',
+        async: false,
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
         },
@@ -71,7 +71,7 @@ function LoadCriteriaSliderData(sliderId, listData)
 {
     for (var i = 0; i < listData.length; i++)
     {
-        $("#" + sliderId).slick('slickAdd', "<div issueid='" + listData[i].ID + "'><img src='" + listData[i].image_url + "' />"
+        $("#" + sliderId).append("<div issueid='" + listData[i].ID + "'><img src='" + listData[i].image_url + "' />"
              + listData[i].name +   "</div>");
     }
 }
