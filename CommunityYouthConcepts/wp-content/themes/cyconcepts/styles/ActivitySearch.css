@@ -18,7 +18,9 @@ body {
     color: white;
     background-color: #81D742;
     overflow: hidden;
-    height: 50%;
+    height: 1.5em;
+    border-radius: 5px;
+    padding-top: .2em;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -54,7 +56,7 @@ textarea {
 .center .slick-center h3{ -moz-transform:scale(1.08);-ms-transform:scale(1.08);-o-transform:scale(1.08);-webkit-transform:scale(1.08);color:#e67e22;opacity:1;transform:scale(1.08);}
 .center .slick-slide h3 { border:solid 1px;}
 .center h3{opacity:0.8;transition:all 300ms ease;}
-.content{margin:auto;padding:20px;width:600px; background-color:#2EA3F2;}
+.content{margin:auto;padding:20px; background-color:#2EA3F2;}
 .content:after,.buttons::after{clear:both;content:"";display:table;}
 .destroy{font-weight:400;margin-top:40px;}
 .features{display:block;list-style-type:none;margin-top:30px;padding:0;text-align:center;}
