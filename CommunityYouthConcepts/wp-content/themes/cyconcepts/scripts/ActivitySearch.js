@@ -7,9 +7,9 @@ $(document).ready(function () {
 function InitializeSliders() {
 
 
-    var interests = LoadCategories("Interests");
-    var issues = LoadCategories("Issues");
-    var intervals = LoadCategories("Intervals");
+    var interests = LoadCategories("interest");
+    var issues = LoadCategories("issue");
+    var intervals = LoadCategories("interval");
 
     $('.center').slick({
         centerMode: true,
@@ -65,7 +65,7 @@ function GetSearchCriteria()
 }
 
 function Search(criteria, countOnly) {
-    var serviceURL = "http://www.cyconcepts.org/wp-json/posts?filter[issue]=" + criteria.IssueId
+    var serviceURL = "http://cyconcepts.org/wp-json/posts?filter[issue]=" + criteria.IssueId
         + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;
     var isDEV = document.location.href.indexOf('localhost') > 0;
     if (isDEV) {
@@ -100,11 +100,11 @@ function LoadResults(data, countOnly)
 
 function LoadCategories(categoryId)
 {
-    var serviceURL = "http://www.cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
-    var isDEV = document.location.href.indexOf('localhost') > 0;
-    if (isDEV) {
-        serviceURL = "/TestData/interest.xml";
-    }
+    var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
+    //var isDEV = document.location.href.indexOf('localhost') > 0;
+    //if (isDEV) {
+    //    serviceURL = "/TestData/interest.xml";
+    //}
 
     var res = $.ajax({
         url: serviceURL,
