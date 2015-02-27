@@ -36,7 +36,7 @@ function InitializeSliders() {
 
     // On before slide change
     $('.center').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        alert('before');
+        alert('git');
         console.log(nextSlide);
     });
 
