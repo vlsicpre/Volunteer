@@ -33,20 +33,24 @@ function InitializeSliders() {
         ]
     });
 
+    $('.center').slick('slickAdd', "<div issueid='123'>test</div>");
+
+
 
     // On before slide change
     $('.center').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        alert('git');
+        
         console.log(nextSlide);
     });
 
     // On before slide change
     $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        alert('after');
+        
         //var currentSlide = $('.center').slick('slick-center');
 
         //var slide = $(slider.$slides.get(index)).data('caption');
-        var issueid = slick.$slides.get(1).attr('issueid');
+        var issueid = $(slick.$slides.get(currentSlide)).attr("class");
+
         console.log(nextSlide);
     });
 
