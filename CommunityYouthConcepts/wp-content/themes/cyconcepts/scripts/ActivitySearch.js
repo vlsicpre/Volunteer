@@ -7,6 +7,8 @@ $(document).ready(function () {
 function InitializeSliders() {
     $('.center').slick({
         centerMode: true,
+        lazyLoad: 'ondemand',
+        infinite: true,
         centerPadding: '60px',
         slidesToShow: 3,
         responsive: [
@@ -41,6 +43,10 @@ function InitializeSliders() {
     // On before slide change
     $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
         alert('after');
+        //var currentSlide = $('.center').slick('slick-center');
+
+        //var slide = $(slider.$slides.get(index)).data('caption');
+        var issueid = slick.$slides.get(1).attr('issueid');
         console.log(nextSlide);
     });
 
