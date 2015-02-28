@@ -130,7 +130,7 @@ function LoadResults(data, countOnly) {
     else {
         SetMode("Results");
         $("#resultsTable").html("");//reset
-        $("#resultsTable").append("</thead><tr><th>Activity</th><th>Time</th></tr></thead>");
+        $("#resultsTable").append("<thead><tr><th>Activity</th><th>Time</th></tr></thead>");
         $("#resultsTable").append("<tbody>");
         for (var i = 0; i < data.length; i++) {
             var row = "<tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>{TIME}</td></tr>";
