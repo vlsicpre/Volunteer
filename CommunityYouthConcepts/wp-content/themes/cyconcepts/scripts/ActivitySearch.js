@@ -133,7 +133,7 @@ function LoadResults(data, countOnly) {
         $("#resultsTable").append("<thead><tr><th>Activity</th><th>Time</th></tr></thead>");
         $("#resultsTable").append("<tbody>");
         for (var i = 0; i < data.length; i++) {
-            var row = "<div class='row'><tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>{TIME}</td></tr></div>";
+            var row = "<tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>{TIME}</td></tr>";
             row = row.replace('{URL}', data[i].link).replace('{NAME}', data[i].title).replace('{TIME}', data[i].terms.time[0].name);
             $("#resultsTable").append(row);
         }
