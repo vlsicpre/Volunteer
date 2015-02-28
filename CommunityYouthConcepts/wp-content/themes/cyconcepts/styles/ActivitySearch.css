@@ -7,8 +7,8 @@ body {
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 /* Centered Name */
@@ -19,15 +19,17 @@ body {
     background-color: #81D742;
     overflow: hidden;
     height: 1.5em;
-    border-radius: 5px;
+    border-radius: 3%;
     padding-top: .2em;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 10%;
 }
 
 
@@ -75,7 +77,7 @@ textarea {
 .slick-slide .image{padding:10px;}
 .slick-slide img{border:5px solid #FFF;display:block;width:100%;}
 .slick-slide img.slick-loading{border:0 }
-.slick-slider{margin:30px auto 50px;}
+.slick-slider{margin:5%; margin-top: 1%;}
 .subheading{color:#555;font-size:12px;font-style:italic;font-weight:400;margin:10px auto;text-align:center;}
 .white{background:#fff;color:#3498db;}
 .white pre,.white hr{background:#3498db !important;}
