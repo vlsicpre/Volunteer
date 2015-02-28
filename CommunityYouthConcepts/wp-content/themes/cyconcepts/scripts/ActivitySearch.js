@@ -1,5 +1,6 @@
 ﻿
 $(document).ready(function () {
+    SetMode("Search");
     InitializeSliders();
 });
 
@@ -47,6 +48,10 @@ function InitializeSliders() {
         var criteria = GetSearchCriteria();
         Search(criteria, 0);
     });
+
+    $("#BackButton").click(function () {
+        SetMode("Search");
+    });
 }
 
 
@@ -66,7 +71,7 @@ function GetSearchCriteria() {
 }
 
 function Search(criteria, countOnly) {
-    var serviceURL = "http://cyconcepts.org/wp-json/posts?filter[issue]=" + criteria.IssueId
+    var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
         + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;    
 
     var res = $.ajax({
@@ -82,33 +87,49 @@ function Search(criteria, countOnly) {
 }
 
 
-    function LoadResults(data, countOnly) {
-        if (countOnly == 1) {
-            //Update the status bar only
-            $("#ResultsCount > span").html(data.length + " results found.");
+function LoadResults(data, countOnly) {
+    if (countOnly == 1) {
+        //Update the status bar only
+        $("#ResultsCount > span").html(data.length + " results found.");
+    }
+    else {
+        SetMode("Results");
+        $("#ResultList").html();//reset
+        for (var i = 0; i < data.length; i++)
+        {
+            var row = "<div><a href='{URL}' target='_blank'>{NAME}<span>Time: {TIME}</span></div>";
+            row = row.replace('{URL}', data[i].link).replace('{NAME}',data[i].title).replace('{TIME}',data[i].terms.time[0].name);
+            $("#ResultList").append(row);
+        }
+    }
+}
+
+    function SetMode(mode) {
+        if (mode == "Results") {
+            $('#Results').show();
+            $('#Search').hide();
         }
         else {
-            SetMode("Results");
-
+            $('#Results').hide();
+            $('#Search').show();
         }
-
     }
 
- function LoadCategories(categoryId) {
-    var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
-    var isDEV = document.location.href.indexOf('localhost') > 0;
-    if (isDEV) {
-        serviceURL = "/TestData/interest.xml";
-    }
+    function LoadCategories(categoryId) {
+       var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" +categoryId + "/terms";
+       var isDEV = document.location.href.indexOf('localhost') > 0;
+       if (isDEV) {
+           serviceURL = "/TestData/interest.xml";
+           }
 
-    var res = $.ajax({
-        url: serviceURL,
-        dataType: 'json',
-        async: false, /*Very important: Need to have plugin wait for this to complete*/
-        success: function (data) {
-            LoadCriteriaSliderData(categoryId, data);
+       var res = $.ajax({
+           url: serviceURL,
+           dataType: 'json',
+           async: false, /*Very important: Need to have plugin wait for this to complete*/
+               success: function (data) {
+                   LoadCriteriaSliderData(categoryId, data);
         },
-        error: function (error) {
+            error: function (error) {
             alert(error);
         }
     });
