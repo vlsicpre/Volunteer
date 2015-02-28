@@ -131,9 +131,9 @@ function LoadResults(data, countOnly) {
         SetMode("Results");
         $("#ResultList").html("");//reset
         for (var i = 0; i < data.length; i++) {
-            var row = "<div><a href='{URL}' target='_blank'>{NAME}</a><span>Time: {TIME}</span></div>";
+            var row = "<tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>Time: {TIME}</td></tr>";
             row = row.replace('{URL}', data[i].link).replace('{NAME}', data[i].title).replace('{TIME}', data[i].terms.time[0].name);
-            $("#ResultList").append(row);
+            $(".table").append(row);
         }
     }
 }
