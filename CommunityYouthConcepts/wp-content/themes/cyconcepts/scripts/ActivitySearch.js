@@ -77,12 +77,12 @@ function Search(countOnly) {
     var criteria = GetSearchCriteria();
 
     if (countOnly == 1) {
-        $("#ResultsCount > span").html("Finding Matches...");
+        $("#ResultsCount").html("Finding Matches...");
         dataCacheIsValid = 0;//invalidate the dataCache because a new search ran
         dataCache = null;
     }
     else {
-        $("#ResultsCount > span").html("Loading Matches...");
+        $("#ResultsCount").html("Loading Matches...");
     }
 
     if (dataCacheIsValid == 0) {
@@ -115,10 +115,10 @@ function LoadResults(data, countOnly) {
     if (countOnly == 1) {
         //Update the status bar only
         if (data.length > 0) {
-            $("#ResultsCount > span").html("View " + data.length + " Matches");
+            $("#ResultsCount").html("View " + data.length + " Matches");
         }
         else {
-            $("#ResultsCount > span").html("Hmm. No matches found.");
+            $("#ResultsCount").html("Hmm. No matches found.");
         }
     }
     else {
@@ -134,7 +134,8 @@ function LoadResults(data, countOnly) {
 
 function LoadCategories(categoryId) {
     var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
-    var isDEV = document.location.href.indexOf('localhost') > 0;
+    var href = document.location.href;
+    var isDEV = href.indexOf('localhost') > 0 | href.indexOf('C:') > 0;
     if (isDEV) {
         serviceURL = "/TestData/interest.xml";
     }
