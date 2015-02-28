@@ -20,6 +20,7 @@ function InitializeSliders() {
         lazyLoad: 'ondemand',
         infinite: true,
         centerPadding: '60px',
+        swipeToSlide: true,
         slidesToShow: 5,
         responsive: [
           {
