@@ -164,7 +164,7 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
 }
 
 #BackButton {
-padding:15px;
+padding:15px; cursor:pointer;
 }
 
 #ResultsCount {

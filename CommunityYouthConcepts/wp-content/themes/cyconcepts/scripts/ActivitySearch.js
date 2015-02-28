@@ -134,7 +134,7 @@ function LoadResults(data, countOnly) {
     if (countOnly == 1) {
         //Update the status bar only
         if (data.length > 0) {
-            $("#ResultsCount").html("View " + data.length + " Matches");
+            $("#ResultsCount").html("View " + data.length + " Match(es)");
         }
         else {
             $("#ResultsCount").html("Hmm. No matches found.");
