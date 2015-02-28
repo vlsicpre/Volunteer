@@ -2,7 +2,7 @@
 body {
     font-family: 'Open Sans', Arial, sans-serif;
     height: 100%;
-    font-size: 1.3em;
+    font-size: 2.3em;
 }
 
 /* Centered Name */
@@ -90,7 +90,7 @@ h1.title{font-size:96px;}
 h2{font-family:Pacifico;font-size:36px;margin:20px auto;text-align:center;}
 h4{font-family:Pacifico;font-size:28px;margin:20px auto;text-align:center;}
 hr{background:#fff;border:0;height:1px;margin:40px 0;}
-p{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:40px;text-align:center;}
+p{font-weight:700;line-height:1.5;margin-bottom:40px;text-align:center;}
 p.note{font-size: 12px;}
 p.cdn{font-size: 14px;}
 p.guff{font-size:16px;}
@@ -155,8 +155,16 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
 
 }
 
+#ResultList .panel-body {
+    background-color:#81D742;
+}
+
 .ResultList > span {
     float: right;
+}
+
+#BackButton {
+padding:15px;
 }
 
 #ResultsCount {
