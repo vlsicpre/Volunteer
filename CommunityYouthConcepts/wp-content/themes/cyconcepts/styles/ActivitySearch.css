@@ -153,14 +153,26 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
     border-color:orange;
 }
 
-.ResultList > div {
+#Results div {
     background-color: white;
     width: 100%;
     padding: 1%;
-    font-size: 2em;
+    font-size: 1.25em;
     color: blue;
+    margin: .5em;
 }
 
-.ResultList > span {
+#ResultList span {
     float: right;
+    line-height: none;
+}
+
+#ResultList a {
+    line-height: none;
+}
+
+#ResultList > div {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    line-height:none;
 }
