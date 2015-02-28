@@ -65,26 +65,14 @@ textarea {
     border-color:orange;
 }
 
-#Results div {
+.ResultList > div {
     background-color: white;
     width: 100%;
     padding: 1%;
-    font-size: 1.25em;
+    font-size: 2em;
     color: blue;
-    margin: .5em;
 }
 
-#ResultList span {
+.ResultList > span {
     float: right;
-    line-height: none;
-}
-
-#ResultList a {
-    line-height: none;
-}
-
-#ResultList > div {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    line-height:none;
 }
