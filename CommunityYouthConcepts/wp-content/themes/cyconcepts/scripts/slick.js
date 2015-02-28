@@ -1152,7 +1152,7 @@
 
                 image
                   .load(function() { image.animate({ opacity: 1 }, 200); })
-                  .css({ opacity: 0 })
+                  .css({ opacity: 1 })
                   .attr('src', imageSource)
                   .removeAttr('data-lazy')
                   .removeClass('slick-loading');
@@ -1483,7 +1483,7 @@
                     right: targetLeft,
                     top: 0,
                     zIndex: 800,
-                    opacity: 0
+                    opacity: 1
                 });
             } else {
                 $(element).css({
@@ -1491,7 +1491,7 @@
                     left: targetLeft,
                     top: 0,
                     zIndex: 800,
-                    opacity: 0
+                    opacity: 1
                 });
             }
         });
