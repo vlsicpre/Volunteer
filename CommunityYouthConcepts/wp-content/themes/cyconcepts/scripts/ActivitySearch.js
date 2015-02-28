@@ -19,6 +19,7 @@ function InitializeSliders() {
         centerMode: true,
         lazyLoad: 'ondemand',
         infinite: true,
+        arrows: true,
         centerPadding: '60px',
         swipeToSlide: true,
         slidesToShow: 5,
@@ -26,7 +27,6 @@ function InitializeSliders() {
           {
               breakpoint: 1000,
               settings: {
-                  arrows: false,
                   centerMode: true,
                   centerPadding: '30px',
                   slidesToShow: 3
@@ -35,7 +35,6 @@ function InitializeSliders() {
           {
               breakpoint: 480,
               settings: {
-                  arrows: false,
                   centerMode: true,
                   slidesToShow: 1
               }
@@ -92,13 +91,27 @@ function Search(countOnly) {
     }
 
     if (dataCacheIsValid == 0) {
-        var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
-            + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;
+        var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project";
+        var interestFilter = "&filter[interest]=" +criteria.InterestId;
+        var issueFilter = "&filter[issue]=" +criteria.IssueId;        
+        var timeFilter = "&filter[time]=" +criteria.IntervalId;
+
+        serviceURL = serviceURL + interestFilter;//interest is required so always use it
+
+        if(criteria.IssueId != 'any')
+        {
+            serviceURL = serviceURL + issueFilter;
+        }
+
+        if(criteria.IntervalId != 'any')
+        {
+            serviceURL = serviceURL + timeFilter;
+        }
 
         pendingAJAXRequest = $.ajax({
-            url: serviceURL,
-            dataType: 'json',
-            success: function (data) {
+                url: serviceURL,
+                dataType: 'json',
+                success: function(data) {
                 dataCache = data;//save to cache
                 dataCacheIsValid = 1;
                 LoadResults(data, countOnly);
