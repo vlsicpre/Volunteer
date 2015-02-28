@@ -92,7 +92,7 @@ function Search(countOnly) {
             LoadResults(data, countOnly);
         },
         error: function (error) {
-            alert(error);
+            
         }
     });
 }
@@ -134,7 +134,7 @@ function LoadCategories(categoryId) {
             LoadCriteriaSliderData(categoryId, data);
         },
         error: function (error) {
-            alert(error);
+            
         }
     });
 }
