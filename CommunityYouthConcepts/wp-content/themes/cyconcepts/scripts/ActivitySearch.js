@@ -109,9 +109,6 @@ function LoadCategories(categoryId)
         dataType: 'json',
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
-        },
-        error: function (error) {
-            alert(error);
         }
     });
 }
