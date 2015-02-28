@@ -3,55 +3,62 @@
 <head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="styles/ActivitySearch.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.js"></script>
     <script src="scripts/ActivitySearch.js"></script>
     <title></title>
 </head>
-<body style="background:#2EA3F2;">
-    <style>
-        /*div {
-            background: #2EA3F2;
-            border: solid 1px #2EA3F2;
-        }*/
-    </style>
-    <section id="features" class="blue">
-        <div class="content">
-            <div id="Search">
-                <div id="InterestName" class="CriteriaName">
-                    <span class="textVertAlign">Interest Name</span>
-                </div>
-                <div id="interest" class="slider center">
-                  
-                </div>
-                <br>
-                <div id="IssueName" class="CriteriaName">
-                    <span class="textVertAlign">Issues Name</span>
-                </div>
-                <div id="issue" class="slider center">
-                </div>                
-                <br />
-                <div id="IntervalName" class="CriteriaName">
-                    <span class="textVertAlign">Interval Name</span>
-                </div>
-                <div id="time" class="slider center">
-                    
-                </div>                
-                <br />
-                <div id="ResultsCount" class="CriteriaName">
-                    <span class="textVertAlign">Result Count</span>
-                </div>
+<body class="container">
+    <div id="Search">
+        <div class="row"
+        </div>
+        <div class="row">
+            <div class="col-xs-12 panel-body CriteriaName" id="InterestName">   
+                    <span class="textVertAlign">Interests</span>
             </div>
-            <div id="Results">
+        </div>
+        <div class="row">
+            <div id="interest" class="slider center">
+            </div>
+        </div>
+        <div class="row">
+            <div id="IssueName" class="col-xs-12 panel-body CriteriaName">
+                <span class="textVertAlign">Issues</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="issue" class="slider center">
+            </div>      
+        </div>
+        <div class="row">
+            <div id="IntervalName" class="col-xs-12 panel-body CriteriaName">
+                <span class="textVertAlign">Time</span>
+            </div>
+        </div>
+        <div class="row">
+            <div id="time" class="slider center">
+            </div>
+        </div>
+        <div id="Results">
+            <div class="row">
                 <div id="BackButton">
                     Back
                 </div>
+            </div>
+            <div class="row">
                 <div id="ResultList">
-
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="footer CriteriaName" id="ResultsCount">
+            Result Count
+        </div>
+    </div>
 </body>
 </html>

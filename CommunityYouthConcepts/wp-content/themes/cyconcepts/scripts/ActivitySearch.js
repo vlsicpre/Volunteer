@@ -90,9 +90,6 @@ function Search(countOnly) {
         dataType: 'json',
         success: function(data) {
             LoadResults(data, countOnly);
-        },
-        error: function (error) {
-            alert(error);
         }
     });
 }
@@ -132,9 +129,6 @@ function LoadCategories(categoryId) {
         async: false, /*Very important: Need to have plugin wait for this to complete*/
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
-        },
-        error: function (error) {
-            alert(error);
         }
     });
 }

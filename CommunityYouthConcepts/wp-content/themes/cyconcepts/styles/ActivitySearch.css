@@ -1,15 +1,13 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color  :#2EA3F2;
+    font-family: 'Open Sans', Arial, sans-serif;
+    height: 100%;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 10%;
-    padding-right: 10%;
-}
+
 
 /* Centered Name */
 /* Set some basic padding to keep content from hitting the edges */
@@ -17,12 +15,6 @@ body {
     text-align: center;
     color: white;
     background-color: #81D742;
-    overflow: hidden;
-    height: 1.5em;
-    border-radius: 3%;
-    padding-top: .2em;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -30,6 +22,15 @@ input,
 select,
 textarea {
     max-width: 10%;
+}
+
+
+.footer{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
 }
 
 
