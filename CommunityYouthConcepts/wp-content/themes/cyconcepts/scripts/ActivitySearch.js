@@ -2,6 +2,7 @@
 $(document).ready(function () {
     SetMode("Search");
     InitializeSliders();
+    Search(1);
 });
 
 
@@ -40,20 +41,20 @@ function InitializeSliders() {
 
     // On after slide change
     $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        var criteria = GetSearchCriteria();
-        Search(criteria, 1);
+        
+        Search(1);
     });
 
     $('#ResultsCount').click(function() {
-        var criteria = GetSearchCriteria();
-        Search(criteria, 0);
+        
+        Search(0);
     });
 
     $("#BackButton").click(function () {
         SetMode("Search");
+        Search(1);
     });
 }
-
 
 function SearchCriteria() {
     this.InterestId = "";
@@ -70,7 +71,17 @@ function GetSearchCriteria() {
     return criteria;
 }
 
-function Search(criteria, countOnly) {
+function Search(countOnly) {
+    var criteria = GetSearchCriteria();
+
+    if (countOnly == 1)
+    {
+        $("#ResultsCount > span").html("Finding Matches...");
+    }
+    else {
+        $("#ResultsCount > span").html("Loading Matches...");
+    }    
+
     var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
         + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;    
 
@@ -86,15 +97,19 @@ function Search(criteria, countOnly) {
     });
 }
 
-
 function LoadResults(data, countOnly) {
     if (countOnly == 1) {
         //Update the status bar only
-        $("#ResultsCount > span").html(data.length + " results found.");
+        if (data.length > 0) {
+            $("#ResultsCount > span").html("View " + data.length + " Matches");
+        }
+        else {
+            $("#ResultsCount > span").html("Hmm. No matches found.");
+        }
     }
     else {
         SetMode("Results");
-        $("#ResultList").html();//reset
+        $("#ResultList").html("");//reset
         for (var i = 0; i < data.length; i++)
         {
             var row = "<div><a href='{URL}' target='_blank'>{NAME}<span>Time: {TIME}</span></div>";
@@ -104,35 +119,35 @@ function LoadResults(data, countOnly) {
     }
 }
 
-    function SetMode(mode) {
-        if (mode == "Results") {
-            $('#Results').show();
-            $('#Search').hide();
-        }
-        else {
-            $('#Results').hide();
-            $('#Search').show();
-        }
+function LoadCategories(categoryId) {
+    var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
+    var isDEV = document.location.href.indexOf('localhost') > 0;
+    if (isDEV) {
+        serviceURL = "/TestData/interest.xml";
     }
 
-    function LoadCategories(categoryId) {
-       var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" +categoryId + "/terms";
-       var isDEV = document.location.href.indexOf('localhost') > 0;
-       if (isDEV) {
-           serviceURL = "/TestData/interest.xml";
-           }
-
-       var res = $.ajax({
-           url: serviceURL,
-           dataType: 'json',
-           async: false, /*Very important: Need to have plugin wait for this to complete*/
-               success: function (data) {
-                   LoadCriteriaSliderData(categoryId, data);
+    var res = $.ajax({
+        url: serviceURL,
+        dataType: 'json',
+        async: false, /*Very important: Need to have plugin wait for this to complete*/
+        success: function (data) {
+            LoadCriteriaSliderData(categoryId, data);
         },
-            error: function (error) {
+        error: function (error) {
             alert(error);
         }
     });
+}
+
+function SetMode(mode) {
+    if (mode == "Results") {
+        $('#Results').show();
+        $('#Search').hide();
+    }
+    else {
+        $('#Results').hide();
+        $('#Search').show();
+    }
 }
 
 function LoadCriteriaSliderData(sliderId, listData) {
