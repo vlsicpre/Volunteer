@@ -1,4 +1,7 @@
 ﻿
+var dataCache = null;
+var dataCacheIsValid = 0;
+
 $(document).ready(function () {
     SetMode("Search");
     InitializeSliders();
@@ -41,12 +44,11 @@ function InitializeSliders() {
 
     // On after slide change
     $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
-        
+
         Search(1);
     });
 
-    $('#ResultsCount').click(function() {
-        
+    $('#ResultsCount').click(function () {
         Search(0);
     });
 
@@ -74,27 +76,39 @@ function GetSearchCriteria() {
 function Search(countOnly) {
     var criteria = GetSearchCriteria();
 
-    if (countOnly == 1)
-    {
+    if (countOnly == 1) {
         $("#ResultsCount > span").html("Finding Matches...");
+        dataCacheIsValid = 0;//invalidate the dataCache because a new search ran
+        dataCache = null;
     }
     else {
         $("#ResultsCount > span").html("Loading Matches...");
-    }    
+    }
 
-    var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
-        + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;    
+    if (dataCacheIsValid == 0) {
+        var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
+            + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;
 
-    var res = $.ajax({
-        url: serviceURL,
-        dataType: 'json',
-        success: function(data) {
-            LoadResults(data, countOnly);
-        },
-        error: function (error) {
-            
+        var res = $.ajax({
+            url: serviceURL,
+            dataType: 'json',
+            success: function (data) {
+                dataCache = data;//save to cache
+                dataCacheIsValid = 1;
+                LoadResults(data, countOnly);
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+    else {
+        //Load from cache
+        //Only switch to results mode if there are results
+        if (dataCache != null && dataCache.length > 0) {
+            LoadResults(dataCache, countOnly)
         }
-    });
+    }
 }
 
 function LoadResults(data, countOnly) {
@@ -110,10 +124,9 @@ function LoadResults(data, countOnly) {
     else {
         SetMode("Results");
         $("#ResultList").html("");//reset
-        for (var i = 0; i < data.length; i++)
-        {
+        for (var i = 0; i < data.length; i++) {
             var row = "<div><a href='{URL}' target='_blank'>{NAME}</a><span>Time: {TIME}</span></div>";
-            row = row.replace('{URL}', data[i].link).replace('{NAME}',data[i].title).replace('{TIME}',data[i].terms.time[0].name);
+            row = row.replace('{URL}', data[i].link).replace('{NAME}', data[i].title).replace('{TIME}', data[i].terms.time[0].name);
             $("#ResultList").append(row);
         }
     }
@@ -134,7 +147,7 @@ function LoadCategories(categoryId) {
             LoadCriteriaSliderData(categoryId, data);
         },
         error: function (error) {
-            
+
         }
     });
 }
@@ -152,7 +165,7 @@ function SetMode(mode) {
 
 function LoadCriteriaSliderData(sliderId, listData) {
     for (var i = 0; i < listData.length; i++) {
-        $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img src='" + listData[i].image_url + "' />"
+        $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img data-lazy='" + listData[i].image_url + "' />"
              + listData[i].name + "</div>");
     }
 }
