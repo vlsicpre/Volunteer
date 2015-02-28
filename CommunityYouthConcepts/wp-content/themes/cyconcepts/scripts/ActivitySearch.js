@@ -5,11 +5,9 @@ $(document).ready(function () {
 
 
 function InitializeSliders() {
-
-
     var interests = LoadCategories("interest");
     var issues = LoadCategories("issue");
-    var intervals = LoadCategories("interval");
+    var intervals = LoadCategories("time");
 
     $('.center').slick({
         centerMode: true,
@@ -101,15 +99,14 @@ function LoadResults(data, countOnly)
 function LoadCategories(categoryId)
 {
     var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
-    //var isDEV = document.location.href.indexOf('localhost') > 0;
-    //if (isDEV) {
-    //    serviceURL = "/TestData/interest.xml";
-    //}
+    var isDEV = document.location.href.indexOf('localhost') > 0;
+    if (isDEV) {
+        serviceURL = "/TestData/interest.xml";
+    }
 
     var res = $.ajax({
         url: serviceURL,
         dataType: 'json',
-        async: false,
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
         },
