@@ -20,13 +20,14 @@ function InitializeSliders() {
         lazyLoad: 'ondemand',
         infinite: true,
         centerPadding: '60px',
-        slidesToShow: 3,
+        slidesToShow: 5,
         responsive: [
           {
-              breakpoint: 768,
+              breakpoint: 1000,
               settings: {
                   arrows: false,
                   centerMode: true,
+                  centerPadding: '30px',
                   slidesToShow: 3
               }
           },
@@ -35,7 +36,6 @@ function InitializeSliders() {
               settings: {
                   arrows: false,
                   centerMode: true,
-                  centerPadding: '40px',
                   slidesToShow: 1
               }
           }
