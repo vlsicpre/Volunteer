@@ -52,13 +52,12 @@ function SearchCriteria() {
     this.IntervalId = "";
 }
 
-function GetSearchCriteria()
-{
+function GetSearchCriteria() {
     var criteria = new SearchCriteria();
-    criteria.InterestId = $("#Interests > div .slick-center").attr('dataId');
-    criteria.IssueId = $("#Issues > div .slick-center").attr('dataId');
-    criteria.IntervalId = $("#Intervals > div .slick-center").attr('dataId');
-    
+    criteria.InterestId = $("#interest > div .slick-center").attr('dataId');
+    criteria.IssueId = $("#issue > div .slick-center").attr('dataId');
+    criteria.IntervalId = $("#time > div .slick-center").attr('dataId');
+
     return criteria;
 }
 
@@ -83,10 +82,8 @@ function Search(criteria, countOnly) {
 }
 
 
-function LoadResults(data, countOnly)
-{
-    if (countOnly == 1)
-    {
+function LoadResults(data, countOnly) {
+    if (countOnly == 1) {
         //Update the status bar only
     }
     else {
@@ -96,8 +93,7 @@ function LoadResults(data, countOnly)
 
 }
 
-function LoadCategories(categoryId)
-{
+function LoadCategories(categoryId) {
     var serviceURL = "http://cyconcepts.org/wp-json/taxonomies/" + categoryId + "/terms";
     var isDEV = document.location.href.indexOf('localhost') > 0;
     if (isDEV) {
@@ -109,16 +105,17 @@ function LoadCategories(categoryId)
         dataType: 'json',
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
+        },
+        error: function (error) {
+            alert(error);
         }
     });
 }
 
-function LoadCriteriaSliderData(sliderId, listData)
-{
-    for (var i = 0; i < listData.length; i++)
-    {
+function LoadCriteriaSliderData(sliderId, listData) {
+    for (var i = 0; i < listData.length; i++) {
         $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img src='" + listData[i].image_url + "' />"
-             + listData[i].name +   "</div>");
+             + listData[i].name + "</div>");
     }
 }
 
