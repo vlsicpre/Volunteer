@@ -130,12 +130,14 @@ function LoadResults(data, countOnly) {
     else {
         SetMode("Results");
         $("#resultsTable").html("");//reset
-        $("#resultsTable").append("<tr><th>Activity</th><th>Time</th></tr>");
+        $("#resultsTable").append("</thead><tr><th>Activity</th><th>Time</th></tr></thead>");
+        $("#resultsTable").append("<tbody>");
         for (var i = 0; i < data.length; i++) {
-            var row = "<tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>Time: {TIME}</td></tr>";
+            var row = "<tr><td><a href='{URL}' target='_blank'>{NAME}</a></td><td>{TIME}</td></tr>";
             row = row.replace('{URL}', data[i].link).replace('{NAME}', data[i].title).replace('{TIME}', data[i].terms.time[0].name);
             $("#resultsTable").append(row);
         }
+        $("#resultsTable").append("</tbody>");
     }
 }
 
