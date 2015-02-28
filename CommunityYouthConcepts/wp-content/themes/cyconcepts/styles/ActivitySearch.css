@@ -97,7 +97,6 @@ pre{background:#fff;margin:0 10px 20px;padding:10px;}
 section{width:100%;}
 table{font-size:14px;line-height:18px;margin:40px auto 20px; display: block;}
 tr { width: 100%; border-right: none; border-bottom: 1px solid #fff; margin: 0px 0px 20px; padding: 0px 0px 20px; background: transparent; float: left; }
-thead { display: none; }
 td { border: 0; padding: 10px 0px;}
 td,tbody { display: block; width: 100% !important;}
 table.settings td:nth-of-type(1), table.methods td:nth-of-type(1){font-weight: 700; font-size: 16px; line-height: 18px;}
@@ -156,6 +155,10 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
     padding: 1%;
     font-size: 2em;
     color: blue;
+}
+
+.ResultList > div {
+
 }
 
 .ResultList > span {
