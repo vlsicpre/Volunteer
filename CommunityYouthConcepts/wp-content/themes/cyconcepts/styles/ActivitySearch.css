@@ -149,4 +149,6 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
     }
 }
 
-
+.slick-center > img {
+    border-color:orange;
+}
