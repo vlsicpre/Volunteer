@@ -103,6 +103,7 @@ function LoadCategories(categoryId) {
     var res = $.ajax({
         url: serviceURL,
         dataType: 'json',
+        async: false, /*Very important: Need to have plugin wait for this to complete*/
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
         },
