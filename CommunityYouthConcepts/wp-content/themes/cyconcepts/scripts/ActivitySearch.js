@@ -112,9 +112,6 @@ function LoadCategories(categoryId)
         async: false,
         success: function (data) {
             LoadCriteriaSliderData(categoryId, data);
-        },
-        error: function (error) {
-            alert(error);
         }
     });
 }
