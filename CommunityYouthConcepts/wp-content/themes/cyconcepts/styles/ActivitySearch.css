@@ -152,3 +152,15 @@ table.methods td:nth-of-type(2):before{content: 'Arguments: '; font-weight: 700;
 .slick-center > img {
     border-color:orange;
 }
+
+.ResultList > div {
+    background-color: white;
+    width: 100%;
+    padding: 1%;
+    font-size: 2em;
+    color: blue;
+}
+
+.ResultList > span {
+    float: right;
+}
