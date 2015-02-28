@@ -1,6 +1,7 @@
 ﻿
 var dataCache = null;
 var dataCacheIsValid = 0;
+var pendingAJAXRequest = null;
 
 $(document).ready(function () {
     SetMode("Search");
@@ -26,7 +27,6 @@ function InitializeSliders() {
               settings: {
                   arrows: false,
                   centerMode: true,
-                  centerPadding: '40px',
                   slidesToShow: 3
               }
           },
@@ -43,7 +43,7 @@ function InitializeSliders() {
     });
 
     // On after slide change
-    $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
+    $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {      
 
         Search(1);
     });
@@ -74,6 +74,11 @@ function GetSearchCriteria() {
 }
 
 function Search(countOnly) {
+    //cancel the previous search request if its still pending
+    if (pendingAJAXRequest != null) {
+        pendingAJAXRequest.abort();
+    }
+
     var criteria = GetSearchCriteria();
 
     if (countOnly == 1) {
@@ -89,7 +94,7 @@ function Search(countOnly) {
         var serviceURL = "http://cyconcepts.org/wp-json/posts?type=volunteer_project&filter[issue]=" + criteria.IssueId
             + "&filter[interest]=" + criteria.InterestId + "&filter[time]=" + criteria.IntervalId;
 
-        var res = $.ajax({
+        pendingAJAXRequest = $.ajax({
             url: serviceURL,
             dataType: 'json',
             success: function (data) {
