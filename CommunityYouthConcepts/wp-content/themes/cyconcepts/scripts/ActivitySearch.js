@@ -112,7 +112,7 @@ function LoadResults(data, countOnly) {
         $("#ResultList").html("");//reset
         for (var i = 0; i < data.length; i++)
         {
-            var row = "<div><a href='{URL}' target='_blank'>{NAME}<span>Time: {TIME}</span></div>";
+            var row = "<div><a href='{URL}' target='_blank'>{NAME}</a><span>Time: {TIME}</span></div>";
             row = row.replace('{URL}', data[i].link).replace('{NAME}',data[i].title).replace('{TIME}',data[i].terms.time[0].name);
             $("#ResultList").append(row);
         }
