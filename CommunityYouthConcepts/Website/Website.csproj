@@ -63,6 +63,8 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="wp-content\themes\cyconcepts\images\NextPrev.png" />
+    <Content Include="wp-content\themes\cyconcepts\images\TransHRepeat.png" />
     <Content Include="wp-content\themes\cyconcepts\scripts\jquery-1.10.2.min.map" />
     <Content Include="wp-content\themes\cyconcepts\styles\fonts\slick.eot" />
     <Content Include="wp-content\themes\cyconcepts\styles\fonts\slick.ttf" />

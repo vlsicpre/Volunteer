@@ -1,8 +1,10 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.4.1/slick-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/slick-theme.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="styles/ActivitySearch.css" />
@@ -15,56 +17,39 @@
 </head>
 <body class="container-fluid">
     <div id="Search">
-        <div class="row">
-            <div class="col-xs-12 panel-body CriteriaName" id="InterestName">   
-                    <span class="textVertAlign">Interests</span>
+        <div id="divCriteria" style="padding-bottom:50px;">
+            <div class="CriteriaName" id="InterestName">
+                <span class="textVertAlign">Interests</span>
             </div>
-        </div>
-        <div class="row">
             <div id="interest" class="slider center">
             </div>
-        </div>
-        <div class="row">
-            <div id="IssueName" class="col-xs-12 panel-body CriteriaName">
+            <div id="IssueName" class="CriteriaName">
                 <span class="textVertAlign">Issues</span>
             </div>
-        </div>
-        <div class="row">
             <div id="issue" class="slider center">
-            </div>      
-        </div>
-        <div class="row">
-            <div id="IntervalName" class="col-xs-12 panel-body CriteriaName">
+            </div>
+            <div id="IntervalName" class="CriteriaName">
                 <span class="textVertAlign">Time</span>
             </div>
-        </div>
-        <div class="row">
             <div id="time" class="slider center">
             </div>
         </div>
-        
-        <div class="row">
-            <div id="ResultsCount" class="col-xs-12 navbar nav navbar-fixed-bottom panel-body CriteriaName">
+        <div class="navbar nav navbar-fixed-bottom">
+            <div id="transPadding" style="height:25px; width:100%;"></div>
+            <div id="ResultsCount" class="CriteriaName">
                 <span class="textVertAlign">Results</span>
             </div>
         </div>
-
     </div>
 
     <div id="Results">
-        <div class="row">
-            <div id="BackButton" class="CriteriaName">
-                Back
-            </div>
+        <div id="BackButton" class="CriteriaName">
+            Back
         </div>
-        <div class="row">
-            <div id="ResultList">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <table class="table table-striped" id="resultsTable">
-                              
-                        </table>
-                    </div>
+        <div id="ResultList">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-striped" id="resultsTable"></table>
                 </div>
             </div>
         </div>
