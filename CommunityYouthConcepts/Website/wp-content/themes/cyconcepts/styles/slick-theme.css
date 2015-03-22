@@ -6,8 +6,8 @@
 }
 
 /* Arrows */
-.slick-next {background:url(../images/nextprev.png);background-position-y:50px;}
-.slick-prev {background:url(../images/nextprev.png);background-position-y:0px;}
+.slick-next {background:url(../images/nextprev.png) 0 50px; }
+.slick-prev {background:url(../images/nextprev.png);}
 .slick-prev,
 .slick-next
 {
