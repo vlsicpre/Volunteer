@@ -1,0 +1,107 @@
+﻿body,html {
+    font-family: Verdana, Geneva, sans-serif; 
+    -moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;background:#fff;         
+    height:100%;line-height:1;margin:0;padding:0;text-rendering:optimizeLegibility;width:100%;
+    font-size:100%;
+}
+
+a{color:#3498db;}
+
+.CriteriaName {
+    text-align: center;
+    color: white;
+    background-color: #2EA3F2;
+    font-family: Verdana, Geneva, sans-serif; 
+    vertical-align:middle; 
+    font-size:190%;
+    padding:15px;
+}
+
+.slider > div img {
+    margin-left: auto;
+    margin-right:auto;
+}
+.slider > div {  text-align:center;}
+.slick-slide .image{padding:10px;}
+.slick-slide img{border:5px solid #FFF;display:block;width:100%;}
+.slick-slide img.slick-loading{border:0 }
+.slick-slider{margin:5%; margin-top: 1%;}
+.slick-center > img {
+    border-color:orange;
+    border-radius:10px;
+}
+
+#transPadding { background: url(images/transHRepeat.png) repeat-x;}
+#ResultsCount {
+    cursor: pointer;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+
+
+/** Result Listing Styles */
+
+.ResultList > div {
+    background-color: white;
+    width: 100%;
+    padding: 1%;
+    color: blue;
+}
+
+.ResultList > div {
+
+}
+
+#ResultList .panel-body {
+    background-color:#F2F2F2;
+}
+
+#ResultList th{ font-size:200%;}
+#ResultList .resultsTable { font-size:170%}
+
+#BackButton { cursor:pointer;}
+
+/** Media Query Rules*/
+
+@media (max-width: 768px) {
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+}
+
+/*Very tiny or low rez screens: At or below 560*/
+@media (max-height:590px) {
+    .slider > div img {
+        width: 60px;
+    }
+    .CriteriaName{font-size:140%;padding:6px;}
+    .slick-prev, .slick-next {display:none !important;}
+    body, html { font-size:80%;}
+}
+
+/*At least 560*/
+@media (min-height:590px) {
+    .slider > div img {
+        width: 90px;
+    }
+    .CriteriaName{font-size:160%;padding:8px;}
+    body, html { font-size:100%;}
+}
+
+/**At least 850*/
+@media (min-height:850px) {
+    .slider > div img {
+        width: 131.5px;
+    }
+    .CriteriaName{font-size:190%;padding:15px;}
+     body, html { font-size:100%;}
+}
+
+
+
+
+
+
+/** Bootstrap Overrides*/
+.container-fluid { padding:0px;}

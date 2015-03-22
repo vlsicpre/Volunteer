@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceProxy", "ServiceProx
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{652BC134-F65A-4AC3-A934-2B0D7896A4D0}"
 	ProjectSection(SolutionItems) = preProject
+		MobileMediaQueryReference.txt = MobileMediaQueryReference.txt
 		README.txt = README.txt
 	EndProjectSection
 EndProject
