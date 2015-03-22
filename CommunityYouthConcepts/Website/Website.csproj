@@ -63,6 +63,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="wp-content\themes\cyconcepts\images\loader.gif" />
     <Content Include="wp-content\themes\cyconcepts\images\NextPrev.png" />
     <Content Include="wp-content\themes\cyconcepts\images\TransHRepeat.png" />
     <Content Include="wp-content\themes\cyconcepts\scripts\jquery-1.10.2.min.map" />

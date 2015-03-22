@@ -11,35 +11,36 @@ $(document).ready(function () {
     WaitForImageLoading(Initialize);
 });
 
-function Initialize()
-{
+function Initialize() {
     InitializeSliders();
     Search(1);
     SetMode("Search");//show
 }
 
 function InitializeSliders() {
-    
+
 
     $('.center').slick({
+        /*Default settings for resolutions higher than the breakpoints*/
         centerMode: true,
-       
         infinite: true,
         arrows: true,
-        centerPadding: '60px',
+        centerPadding: '10px',/*The side padding that wraps the group of slider items. Increasing this will squish the items together.*/
         swipeToSlide: true,
-        slidesToShow: 5,
+        slidesToShow: 5,/*only on the widest screens*/
         responsive: [
+            {
+                //NOTE: Images will range in size from 60-100px depending upon viewport height. (see CSS media queries)
+                //Settings take effect when width is 800 or less until next breakpoint.
+                breakpoint: 800,
+                settings: {
+                    centerMode: true,
+                    slidesToShow: 3
+                }
+            },
           {
-              breakpoint: 1000,
-              settings: {
-                  centerMode: true,
-                  centerPadding: '30px',
-                  slidesToShow: 3
-              }
-          },
-          {
-              breakpoint: 480,
+              //Settings take effect when width is 300 or less.
+              breakpoint: 300,
               settings: {
                   centerMode: true,
                   slidesToShow: 1
@@ -49,7 +50,7 @@ function InitializeSliders() {
     });
 
     // On after slide change
-    $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {      
+    $('.center').on('afterChange', function (event, slick, currentSlide, nextSlide) {
 
         Search(1);
     });
@@ -104,26 +105,24 @@ function Search(countOnly) {
             serviceURL = "http://localhost/ServiceProxy/api/post/getposts/?";
         }
 
-        var interestFilter = "&filter[interest]=" +criteria.InterestId;
-        var issueFilter = "&filter[issue]=" +criteria.IssueId;        
-        var timeFilter = "&filter[time]=" +criteria.IntervalId;
+        var interestFilter = "&filter[interest]=" + criteria.InterestId;
+        var issueFilter = "&filter[issue]=" + criteria.IssueId;
+        var timeFilter = "&filter[time]=" + criteria.IntervalId;
 
         serviceURL = serviceURL + interestFilter;//interest is required so always use it
 
-        if(criteria.IssueId != 'any')
-        {
+        if (criteria.IssueId != 'any') {
             serviceURL = serviceURL + issueFilter;
         }
 
-        if(criteria.IntervalId != 'any')
-        {
+        if (criteria.IntervalId != 'any') {
             serviceURL = serviceURL + timeFilter;
         }
 
         pendingAJAXRequest = $.ajax({
-                url: serviceURL,
-                dataType: 'json',
-                success: function(data) {
+            url: serviceURL,
+            dataType: 'json',
+            success: function (data) {
                 dataCache = data;//save to cache
                 dataCacheIsValid = 1;
                 LoadResults(data, countOnly);
@@ -218,7 +217,7 @@ function SetMode(mode) {
 }
 
 function LoadCriteriaSliderData(sliderId, listData) {
-        
+
     for (var i = 0; i < listData.length; i++) {
         $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img src='" + listData[i].image_url + "' />"
              + listData[i].name + "</div>");
