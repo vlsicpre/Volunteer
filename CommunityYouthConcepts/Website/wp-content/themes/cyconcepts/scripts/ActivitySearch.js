@@ -4,20 +4,26 @@ var dataCacheIsValid = 0;
 var pendingAJAXRequest = null;
 
 $(document).ready(function () {
-    SetMode("Search");
-    InitializeSliders();
-    Search(1);
-});
-
-
-function InitializeSliders() {
     var interests = LoadCategories("interest");
     var issues = LoadCategories("issue");
     var intervals = LoadCategories("time");
+    //Wait for images.
+    WaitForImageLoading(Initialize);
+});
+
+function Initialize()
+{
+    InitializeSliders();
+    Search(1);
+    SetMode("Search");//show
+}
+
+function InitializeSliders() {
+    
 
     $('.center').slick({
         centerMode: true,
-        lazyLoad: 'ondemand',
+       
         infinite: true,
         arrows: true,
         centerPadding: '60px',
@@ -181,22 +187,43 @@ function LoadCategories(categoryId) {
     });
 }
 
+function WaitForImageLoading(callbackFunction) {
+    var allImagesLoaded = false;
+    $(".Criteria img").each(function (item) {
+        if (!item[0].complete) {
+            setTimeout(function () { WaitForImageLoading(callbackFunction); }, 500);
+            return;
+        }
+        else {
+            if (console) {
+                console.log("Preloading " + item[0].src);
+            }
+        }
+    });
+    //if we made it this far then all the images loaded.
+    callbackFunction();
+}
+
 function SetMode(mode) {
     if (mode == "Results") {
         $('#Results').show();
         $('#Search').hide();
+        $("#LoadingScreen").hide();
     }
     else {
         $('#Results').hide();
         $('#Search').show();
+        $("#LoadingScreen").hide();
     }
 }
 
 function LoadCriteriaSliderData(sliderId, listData) {
+        
     for (var i = 0; i < listData.length; i++) {
-        $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img data-lazy='" + listData[i].image_url + "' />"
+        $("#" + sliderId).append("<div dataId='" + listData[i].slug + "'><img src='" + listData[i].image_url + "' />"
              + listData[i].name + "</div>");
     }
+
 }
 
 
