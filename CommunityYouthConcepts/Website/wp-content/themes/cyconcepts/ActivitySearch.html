@@ -18,21 +18,27 @@
 <body class="container-fluid">
     <div id="LoadingScreen"><div><p class="logoGreen">Community <span class="logoBlue">Youth</span> Concepts</p><p style="color:orange;">Activity Search</p><p>Loading...<img src="images/loader.gif" /></p></div></div>
     <div id="Search">
-        <div id="divCriteria" style="padding-bottom:50px;">
-            <div class="CriteriaName" id="InterestName">
-                <span class="textVertAlign">Interests</span>
+        <div id="divCriteria" >
+            <div class="divCriteriaRow">
+                <div class="CriteriaName" id="InterestName">
+                    <span class="textVertAlign">Interests</span>
+                </div>
+                <div id="interest" class="slider center">
+                </div>
             </div>
-            <div id="interest" class="slider center">
+            <div class="divCriteriaRow">
+                <div id="IssueName" class="CriteriaName">
+                    <span class="textVertAlign">Issues</span>
+                </div>
+                <div id="issue" class="slider center">
+                </div>
             </div>
-            <div id="IssueName" class="CriteriaName">
-                <span class="textVertAlign">Issues</span>
-            </div>
-            <div id="issue" class="slider center">
-            </div>
-            <div id="IntervalName" class="CriteriaName">
-                <span class="textVertAlign">Time</span>
-            </div>
-            <div id="time" class="slider center">
+            <div class="divCriteriaRow LastCriteriaRow">
+                <div id="IntervalName" class="CriteriaName">
+                    <span class="textVertAlign">Time</span>
+                </div>
+                <div id="time" class="slider center">
+                </div>
             </div>
         </div>
         <div class="navbar nav navbar-fixed-bottom">

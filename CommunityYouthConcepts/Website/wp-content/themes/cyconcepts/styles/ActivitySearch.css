@@ -15,6 +15,11 @@ a{color:#3498db;}
 .logoBlue {color:rgba(28, 129, 197, 1);}
 #Search { display:none;/**until loaded*/}
 #Results {display:none;}
+
+#Search {height:100%;}
+#divCriteria { height:100%; line-height:1.5em;}
+.divCriteriaRow { height:33%; vertical-align:top; min-height:100px/*The smallest that media query scenario we are handling for row content.*/ }
+
 .CriteriaName {
     text-align: center;
     color: white;
@@ -62,6 +67,7 @@ a{color:#3498db;}
 /** Bootstrap Overrides*/
 .container-fluid { padding:0px;}
 .navbar {min-height:20px;}
+.navbar-fixed-bottom { bottom:0px !important;}
 
 /** Media Query Rules*/
 
@@ -80,6 +86,7 @@ a{color:#3498db;}
         width: 60px; height:60px;
     }
     .CriteriaName{font-size:140%;padding:6px;}
+    .LastCriteriaRow { margin-bottom:25px;/* Prevent overlap with bottom button and make the scroll bar appear when needed.*/}
     .slick-prev, .slick-next {display:none !important;}
     body, html { font-size:80%; /*background-color:blue;*/}
 }
@@ -91,6 +98,7 @@ a{color:#3498db;}
         width: 70px; height:70px;
     }
     .CriteriaName{font-size:160%;padding:8px;}
+    .LastCriteriaRow { margin-bottom: 30px;}
     body, html { font-size:100%; /*background-color:green;*/}
 }
 
@@ -100,7 +108,8 @@ a{color:#3498db;}
         width: 100px; height:100px;
     }
     .CriteriaName{font-size:190%;padding:15px;}
-     body, html { font-size:100%; /*background-color:red;*/}
+    .LastCriteriaRow { /*No margin needed based on current image sizes and 3 row equal spacing layout*/}
+     body, html { font-size:100%; /* background-color:red;*/}
 }
 
 @media (min-width:1000px) {
